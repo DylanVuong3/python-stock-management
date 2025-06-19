@@ -36,7 +36,17 @@
     </Interpreter>
   </ItemGroup>
   <ItemGroup>
+    <Content Include=".env">
+      <Publish>False</Publish>
+    </Content>
     <Content Include=".gitignore" />
+    <Content Include="static\styles\styles.css" />
+    <Content Include="templates\index.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="static\styles\" />
+    <Folder Include="templates\" />
+    <Folder Include="static\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in
