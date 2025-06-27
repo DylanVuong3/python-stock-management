@@ -12,6 +12,7 @@
     <Name>StockManagement</Name>
     <RootNamespace>StockManagement</RootNamespace>
     <InterpreterId>MSBuild|env|$(MSBuildProjectFullPath)</InterpreterId>
+    <SuppressPackageInstallationPrompt>True</SuppressPackageInstallationPrompt>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -40,6 +41,7 @@
       <Publish>False</Publish>
     </Content>
     <Content Include=".gitignore" />
+    <Content Include="README.md" />
     <Content Include="static\styles\styles.css" />
     <Content Include="templates\index.html" />
   </ItemGroup>
