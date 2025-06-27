@@ -9,7 +9,7 @@ As of now, it is a simple stock viewer.
 - Stock prices are adjusted daily
 
 ## Technologies Used
-HTML, Python, Flask, Alpha Vantage API
+HTML, Python, Flask, Alpha Vantage API, CSS
 
 ## How to Run:
 In order to run this application, you must have an Alpha Vantage API key
@@ -22,6 +22,8 @@ You must also type the following commands in your terminal:
 - $env:FLASK_APP = 'StockManagement.py'
 - $env:FLASK_ENV = 'development'
 - flask run
+
+The script should print out a url link which you can paste into a URL web browser to access the app.
 
 If the app still doesn't run, try executing this command into your windows terminal:
 - Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
