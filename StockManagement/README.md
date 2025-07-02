@@ -16,6 +16,8 @@ In order to run this application, you must have an Alpha Vantage API key
 
 You may generate a free Alpha Vantage API key at https://www.alphavantage.co/support/#api-key
 
+**IMPORTANT: This API only allows for a total of 25 API calls per day**
+
 You must also type the following commands in your terminal:
 
 - env/Scripts/activate
