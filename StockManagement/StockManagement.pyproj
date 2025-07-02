@@ -43,6 +43,7 @@
     <Content Include=".gitignore" />
     <Content Include="README.md" />
     <Content Include="static\styles\styles.css" />
+    <Content Include="templates\graph.html" />
     <Content Include="templates\index.html" />
   </ItemGroup>
   <ItemGroup>

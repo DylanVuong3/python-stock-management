@@ -61,7 +61,9 @@ def get_daily_stock_data(api_key, symbol):
 @app.route('/', methods=['GET', 'POST'])
 
 def index():
-
+    '''
+        Execute corresponding response to user input
+    '''
     API_KEY = os.getenv('ALPHAVANTAGE_API_KEY')
 
     if request.method == 'POST':
@@ -82,6 +84,20 @@ def index():
 
     # For GET request to intially load the page
     return render_template('index.html')
+
+@app.route('/graph', methods=['GET'])
+
+def graph_page():
+    '''
+        Render graph page
+    '''
+    API_KEY = os.getenv('ALPHAVANTAGE_API_KEY')
+
+    labels = ['January', 'February', 'March', 'April', 'May', 'June']
+    data = [0, 10, 15, 8, 22, 18, 25]
+        
+    return render_template('graph.html', labels=labels, data=data)
+
 
 if __name__ == '__main__':
     app.run(debug=True)
