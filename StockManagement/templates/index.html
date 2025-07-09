@@ -30,11 +30,9 @@
 				{% if data %}
 					<div class="mt-4">
 						<h3 class="text-center">Stock Data for {{ symbol }}</h3>
-						<form method="GET" action="/graph", class="form-inline justify-content-center">
-							<button type="submit" class="btn btn-success mb-2">View Graph</button>
-						</form>
 						{{ data | safe }}
 					</div>
+					<img src='static/graph.png' alt="Graph stock data image"/>
 				{% endif %}
 			</div>
 		</div>

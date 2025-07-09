@@ -3,6 +3,9 @@ print("--- Starting script ---")
 from flask import Flask, render_template, request
 import requests
 import pandas as pd
+import matplotlib
+matplotlib.use('Agg')  # Use a non-interactive backend for matplotlib
+import matplotlib.pyplot as plt
 from dotenv import load_dotenv
 import os
 
@@ -12,7 +15,7 @@ app = Flask(__name__)
 
 def get_daily_stock_data(api_key, symbol):
     '''
-        Fetch daily stock data from Alpha Vantage API.
+        Fetch daily stock data from Alpha Vantage API.  
 
         param p1: api_key: Your Alpha Vantage API key.
         param p2: symbol: The stock symbol to fetch data for.
@@ -48,7 +51,12 @@ def get_daily_stock_data(api_key, symbol):
         df.index = pd.to_datetime(df.index)
         df = df.apply(pd.to_numeric)
         
-        return df, None, 
+        # Create graph of stock data and save it to static folder
+        df['Close'].plot(label=symbol, xlabel="Date", ylabel="Closing Price")
+        plt.legend()
+        plt.savefig('static/graph.png')
+
+        return df, None 
     
     except requests.exceptions.RequestException as e:
         print(f"An error has occured with this request: {e}")
@@ -76,28 +84,14 @@ def index():
         daily_data, error_message = get_daily_stock_data(API_KEY, stock_symbol)
 
         if error_message:
-            #Pass error message to template
+            #Pass error message to templateen
             return render_template('index.html', error=error_message)
 
         #Pass data and symbol to template after converting to HTML
-        return render_template('index.html', data=daily_data.head(10).to_html(classes='table table-striped'), symbol=stock_symbol)
+        return render_template('index.html', data=daily_data.head(20).to_html(classes='table table-striped'), symbol=stock_symbol)
 
     # For GET request to intially load the page
     return render_template('index.html')
-
-@app.route('/graph', methods=['GET'])
-
-def graph_page():
-    '''
-        Render graph page
-    '''
-    API_KEY = os.getenv('ALPHAVANTAGE_API_KEY')
-
-    labels = ['January', 'February', 'March', 'April', 'May', 'June']
-    data = [0, 10, 15, 8, 22, 18, 25]
-        
-    return render_template('graph.html', labels=labels, data=data)
-
 
 if __name__ == '__main__':
     app.run(debug=True)
