@@ -42,8 +42,8 @@
     </Content>
     <Content Include=".gitignore" />
     <Content Include="README.md" />
-    <Content Include="static\styles\styles.css" />
     <Content Include="templates\index.html" />
+    <Content Include="templates\inventory.html" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="static\styles\" />
